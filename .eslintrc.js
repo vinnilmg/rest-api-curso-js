@@ -14,5 +14,6 @@ module.exports = {
     'no-console': 'off',
     'no-tabs': 'off',
     indent: 'off',
+		'class-methods-use-this': 'off',
   },
 };
