@@ -15,5 +15,6 @@ module.exports = {
     'no-tabs': 'off',
     indent: 'off',
 		'class-methods-use-this': 'off',
+		'quote-props': 'off',
   },
 };
