@@ -16,5 +16,6 @@ module.exports = {
     indent: 'off',
 		'class-methods-use-this': 'off',
 		'quote-props': 'off',
+		'no-param-reassign': 'off',
   },
 };
