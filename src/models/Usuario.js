@@ -46,7 +46,9 @@ export default class Usuario extends Model {
 
 		// executa ação antes do 'gancho' -> gancho para antes de salvar
 		this.addHook('beforeSave', async (usuario) => {
-			usuario.password_hash = await bcryptjs.hash(usuario.password, 8);
+			if (usuario.password) {
+				usuario.password_hash = await bcryptjs.hash(usuario.password, 8);
+			}
 		});
 
 		return this;

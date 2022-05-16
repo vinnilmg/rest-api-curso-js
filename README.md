@@ -13,3 +13,8 @@ Configurações VScode:
         "source.fixAll": true
 },
 ```
+
+Pra rodar local:
+```
+npm run dev
+```
