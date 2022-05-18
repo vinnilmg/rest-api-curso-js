@@ -1,9 +1,10 @@
 import { Router } from 'express';
 import usuarioController from '../controllers/UsuarioController';
+import loginRequired from '../middlewares/loginRequired';
 
 const router = new Router();
 
-router.get('/', usuarioController.index);
+router.get('/', loginRequired, usuarioController.index);
 router.post('/', usuarioController.create);
 router.get('/:id', usuarioController.show);
 router.put('/:id', usuarioController.update);
