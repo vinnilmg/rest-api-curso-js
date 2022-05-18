@@ -4,10 +4,11 @@ import loginRequired from '../middlewares/loginRequired';
 
 const router = new Router();
 
-router.get('/', loginRequired, usuarioController.index);
-router.post('/', usuarioController.create);
+router.get('/', usuarioController.index);
 router.get('/:id', usuarioController.show);
-router.put('/:id', usuarioController.update);
-router.delete('/:id', usuarioController.delete);
+
+router.post('/', usuarioController.create);
+router.put('/', loginRequired, usuarioController.update); // usuario só pode atualizar seus dados
+router.delete('/', loginRequired, usuarioController.delete); // usuário só pode deletar o seu
 
 export default router;

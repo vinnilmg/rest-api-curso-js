@@ -6,7 +6,9 @@ class UsuarioController {
 		try {
 			const novoUsuario = await Usuario.create(req.body);
 
-			return res.json(novoUsuario);
+			const { id, nome, email } = novoUsuario;
+
+			return res.json({ id, nome, email });
 		} catch (e) {
 			// console.log(e);
 			return res.status(400).json({
@@ -18,7 +20,9 @@ class UsuarioController {
 	// Index -> Exibe todos os usuários
 	async index(req, res) {
 		try {
-			const usuarios = await Usuario.findAll();
+			const usuarios = await Usuario.findAll({
+				attributes: ['id', 'nome', 'email'], // filtrando dados que quero retornar
+			});
 
 			return res.json(usuarios);
 		} catch (e) {
@@ -32,7 +36,10 @@ class UsuarioController {
 		try {
 			const usuario = await Usuario.findByPk(req.params.id);
 
-			return res.json(usuario);
+			// filtrando dados que quero retornar
+			const { id, nome, email } = usuario;
+
+			return res.json({ id, nome, email });
 		} catch (e) {
 			console.log(e);
 			return res.status(500).json({ msg: 'Erro interno.' });
@@ -42,7 +49,7 @@ class UsuarioController {
 	// Update -> Atualiza usuário por ID
 	async update(req, res) {
 		try {
-			const { id } = req.params;
+			const id = req.usuarioId;
 
 			if (!id) {
 				return res.status(400).json({
@@ -59,8 +66,9 @@ class UsuarioController {
 			}
 
 			const usuarioAtualizado = await usuario.update(req.body);
+			const { id: idUsuario, nome, email } = usuarioAtualizado;
 
-			return res.json(usuarioAtualizado);
+			return res.json({ id: idUsuario, nome, email });
 		} catch (e) {
 			// console.log(e);
 			return res.status(400).json({
@@ -72,7 +80,7 @@ class UsuarioController {
 	// Delete => Deleta usuário por ID
 	async delete(req, res) {
 		try {
-			const { id } = req.params;
+			const id = req.usuarioId;
 
 			if (!id) {
 				return res.status(400).json({
