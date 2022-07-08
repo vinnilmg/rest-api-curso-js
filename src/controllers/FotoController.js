@@ -17,10 +17,16 @@ class FotoController {
 			const { originalname, filename } = req.file;
 			const { aluno_id } = req.body;
 
-			// criando foto no db
-			const foto = await Foto.create({ originalname, filename, aluno_id });
+			try {
+				// criando foto no db
+				const foto = await Foto.create({ originalname, filename, aluno_id });
 
-			return res.json(foto);
+				return res.json(foto);
+			} catch (e) {
+				return res.status(400).json({
+					erros: ['Aluno não existe.'], // vai retornar sempre esse erro (pra remover teria que fazer a query e verificar se o aluno existe)
+				});
+			}
 		});
 	}
 }
