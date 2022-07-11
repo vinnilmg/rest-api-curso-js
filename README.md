@@ -5,14 +5,6 @@ ESLINT
 npx eslint --init
 ```
 
-Configurações VScode:
-```
-"editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true,
-        "source.fixAll": true
-},
-```
-
 Criar arquivo .env na raiz do projeto no seguinte formato:
 ```
 DATABASE=teste
@@ -31,4 +23,9 @@ APP_PORT=3001
 Pra rodar local:
 ```
 npm run dev
+```
+
+Gerar/atualizar pasta dist:
+```
+npm run build
 ```
