@@ -14,7 +14,11 @@ import './database/connection';
 dotenv.config();
 
 // Configuração de IPs para o CORS
-const whiteList = ['http://localhost:3000', 'https://www.google.com'];
+const whiteList = [
+	'http://localhost:3000',
+	'http://localhost:5000',
+	'https://www.google.com',
+];
 
 // Configuração de permissão CORS
 const corsOptions = {
