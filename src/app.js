@@ -3,6 +3,7 @@ import express from 'express';
 import { resolve } from 'path';
 import cors from 'cors';
 import helmet from 'helmet';
+import delay from 'express-delay';
 
 import tokenRoutes from './routes/tokenRoutes';
 import usuarioRoutes from './routes/usuarioRoutes';
@@ -45,6 +46,7 @@ class App {
 		this.app.use(express.urlencoded({ extended: true }));
 		this.app.use(express.json());
 		this.app.use(express.static(resolve(__dirname, '..', 'uploads'))); // arquivos estaticos
+		this.app.use(delay(2000)); // inserindo delay de 2 segundos em todas as requisições
 	}
 
 	routes() {
